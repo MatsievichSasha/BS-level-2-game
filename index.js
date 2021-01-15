@@ -29,10 +29,14 @@ fetch(API_URL)
     const names = fighters.map(it => it.name).join('\n');
     console.log(names);
     rootElement.innerText = names;
-    loadingElement.remove();
+    /* loadingElement.remove(); */
   })
   .catch(error => {
     console.warn(error);
     root.innerText = 'Failed to load data';
+    /* loadingElement.remove(); */
+  })
+  .finally(() => {
+    loadingElement.remove();  //незалежно від того буде помилка чи ні  loadingElement.remove() виповниться
   });
 
