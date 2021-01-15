@@ -14,7 +14,7 @@ rootElement.innerText = 'Loading...';
 fetch(API_URL)
   .then(
     response => { return response.json(); },
-    error => { console.warn(error); }) //друга фнукція обробка помилок
+    /* error => { console.warn(error); } */) //друга фнукція обробка помилок
   .then(file => {
     /* console.log(file) */
     const fighters = JSON.parse(atob(file.content));//розкодування "base64" глобаний метод atob поверне результат як строку
@@ -22,5 +22,9 @@ fetch(API_URL)
     const names = fighters.map(it => it.name).join('\n');
     console.log(names);
     rootElement.innerText = names;
+  })
+  .catch(error => {
+    console.warn(error);
+    root.innerText = 'Failed to load data';
   });
 
