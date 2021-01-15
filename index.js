@@ -1,4 +1,4 @@
-const API_URL = 'https://api.git--hub.com/repos/sahanr/street-fighter/contents/fighters.json';
+const API_URL = 'https://api.github.com/repos/sahianr/street-fighter/contents/fighters.json';
 const responsePromise = fetch(API_URL);
 /* console.log(responsePromise); */
 
