@@ -9,7 +9,10 @@ async function startApp() {
     const endpoint = 'repos/sahanr/street-fighter/contents/fighters.json';
     const fighters = await callApi(endpoint, 'GET');
 
-    rootElement.innerText = getFightersNames(fighters);
+    const fightersElement = createFighters(fighters);
+
+    rootElement.appendChild(fightersElement);
+
   } catch (error) {
     console.warn(error);
     rootElement.innerText = 'Failed to load data';
@@ -68,6 +71,14 @@ function createFighter(fighter) {
   const nameElement = createName(name);
   const imageElement = createImage(source);
   const element = createElement({ tagName: 'div', className: 'fighter' });
+
+  element.addEventListener('click', (event) => handleFighterClick(event, 'wrapper'), true)
+  imageElement.addEventListener('click', (event) => handleFighterClick(event, 'image'), false)
+
+  function handleFighterClick(event, el) {
+    console.log(el);
+  }
+
 
   element.append(imageElement, nameElement);
 
